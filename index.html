@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notebook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">Notebook</div>
+  <div class="topbar-tools">
+    <input id="search" type="text" placeholder="Search entries…" autocomplete="off">
+    <button id="new-btn" class="btn-primary">New entry</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="tag-filters" id="tag-filters"></div>
+    <div class="divider"></div>
+    <ul class="entry-list" id="entry-list"></ul>
+  </aside>
+
+  <main class="content" id="content">
+    <!-- selected entry renders here -->
+  </main>
+</div>
+
+<!-- New entry modal -->
+<div class="modal-backdrop" id="modal-backdrop">
+  <div class="modal">
+    <h2>New entry</h2>
+    <p class="modal-hint">This site is static, so there's no server to save to. Fill this in, then copy the generated snippet into <code>posts.js</code> and push to GitHub — the entry will appear the next time the page loads.</p>
+
+    <label>Title</label>
+    <input type="text" id="f-title" placeholder="e.g. Notes on spaced repetition">
+
+    <label>Tags <span class="label-note">comma separated, optional</span></label>
+    <input type="text" id="f-tags" placeholder="e.g. learning, reference">
+
+    <label>Body <span class="label-note">markdown supported</span></label>
+    <textarea id="f-body" rows="10" placeholder="Write the entry here…"></textarea>
+
+    <div class="modal-actions">
+      <button id="generate-btn" class="btn-primary">Generate snippet</button>
+      <button id="close-btn" class="btn-ghost">Cancel</button>
+    </div>
+
+    <div id="snippet-wrap" class="snippet-wrap hidden">
+      <label>Paste this into <code>posts.js</code>, just after the opening <code>[</code>:</label>
+      <textarea id="snippet-out" rows="8" readonly></textarea>
+      <button id="copy-btn" class="btn-ghost">Copy to clipboard</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+<script src="posts.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
