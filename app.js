@@ -16,7 +16,7 @@
   let query = '';
   let selectedId = null;
 
-  const posts = (window.POSTS || []).slice().sort((a, b) => (a.date < b.date ? 1 : -1));
+  const posts = (typeof POSTS !== 'undefined' ? POSTS : []).slice().sort((a, b) => (a.date < b.date ? 1 : -1));
 
   function allTags() {
     const set = new Set();
